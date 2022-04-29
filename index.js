@@ -61,7 +61,7 @@ async function getResponse(url, options, config) {
   try {
     stageOne = await fetch(url, options);
   } catch (e) {
-    return createError("Network Error", config, null, { url, options });
+    return createError(`Network Error | ${e.message}`, config, null);
   }
 
   const response = {
