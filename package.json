@@ -1,5 +1,5 @@
 {
-    "name": "@angel-rs/axios-fetch-adapter",
+    "name": "@angelrs/axios-fetch-adapter",
     "version": "0.3.0-rc.0",
     "description": "Fetch adapter for axios",
     "main": "index.js",

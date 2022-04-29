@@ -31,7 +31,7 @@ You can install the adapter directly from this repository URL or feel free to co
 
 ```
 npm install axios
-npm install @angel-rs/axios-fetch-adapter
+npm install @angelrs/axios-fetch-adapter
 ```
 
 There are two ways to use it:
