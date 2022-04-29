@@ -12,7 +12,7 @@ import { isUndefined } from "axios/lib/utils";
  */
 export default async function fetchAdapter(config) {
   const request = createRequest(config);
-  const promiseChain = [getResponse(request.url, request.options, config)];
+  const promiseChain = [getResponse(request, config)];
 
   if (config.timeout && config.timeout > 0) {
     promiseChain.push(
@@ -39,13 +39,15 @@ export default async function fetchAdapter(config) {
   });
 }
 
-export function createRequestCancelToken(forFetchApi = false) {
+export function createCancelToken(forFetchApi = true) {
   if (forFetchApi) {
     const controller = new AbortController();
+    controller.signal.throwIfRequested = () => {};
     const signal = controller.signal;
+    const cancel = (msg) => controller.abort(msg);
     return {
       token: signal,
-      cancel: (msg) => controller.abort(msg),
+      cancel,
     };
   }
 
@@ -56,10 +58,10 @@ export function createRequestCancelToken(forFetchApi = false) {
  * Fetch API stage two is to get response body. This function tries to retrieve
  * response body based on response's type
  */
-async function getResponse(url, options, config) {
+async function getResponse(request, config) {
   let stageOne;
   try {
-    stageOne = await fetch(url, options);
+    stageOne = await fetch(request);
   } catch (e) {
     return createError(`Network Error | ${e.message}`, config, null);
   }
@@ -146,8 +148,5 @@ function createRequest(config) {
   const fullPath = buildFullPath(config.baseURL, config.url);
   const url = buildURL(fullPath, config.params, config.paramsSerializer);
 
-  return {
-    url: url,
-    options: options,
-  };
+  return new Request(url, options);
 }

@@ -1,14 +1,22 @@
-import axios from 'axios';
-import fetchAdapter from '..';
+import axios from "axios";
+import fetchAdapter, { createCancelToken } from "..";
 
 window.onload = async function () {
   try {
-    const data = await axios.request({
-      url: '/package.json',
-      method: 'get',
+    const cancelTokenSource = createCancelToken();
+    const ax = axios.create({
       adapter: fetchAdapter,
     });
-    document.getElementById('app').append(JSON.stringify(data, null, 4));
+
+    const request = ax.get("/package.json", {
+      cancelToken: cancelTokenSource.token,
+    });
+
+    cancelTokenSource.cancel("Canceled!");
+
+    const data = await request;
+
+    document.getElementById("app").append(JSON.stringify(data, null, 4));
   } catch (e) {
     console.log(e);
   }

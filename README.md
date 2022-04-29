@@ -3,27 +3,9 @@
 This is a fork of [@vespaiach/axios-fetch-adapter](https://github.com/vespaiach/axios-fetch-adapter) with changes specific to a project I'm working on.
 Only difference is that it adds support for `AbortController.signal` to abort requests while keeping same api to axios' `CancelToken`
 
-# How
+# How to use
 
-Use the following `createRequestCancelToken` function & provide it in your axios constructor.
-
-```js
-import axios from 'axios'
-
-export function createRequestCancelToken(forFetchApi = false) {
-  if (forFetchApi) {
-    const controller = new AbortController()
-    const signal = controller.signal
-    return {
-      token: signal,
-      cancel: msg => controller.abort(msg),
-    }
-  }
-
-  return axios.CancelToken.source()
-}
-```
-
+See `test` folder for example of usage
 
 # Installation and Usage
 
