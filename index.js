@@ -2,6 +2,7 @@ import settle from "axios/lib/core/settle";
 import createError from "axios/lib/core/createError";
 import buildURL from "axios/lib/helpers/buildURL";
 import buildFullPath from "axios/lib/core/buildFullPath";
+import CancelToken from "axios/lib/cancel/CancelToken";
 import { isUndefined } from "axios/lib/utils";
 
 /**
@@ -36,6 +37,19 @@ export default async function fetchAdapter(config) {
         : settle(resolve, reject, data);
     }
   });
+}
+
+export function createRequestCancelToken(forFetchApi = false) {
+  if (forFetchApi) {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    return {
+      token: signal,
+      cancel: (msg) => controller.abort(msg),
+    };
+  }
+
+  return CancelToken.source();
 }
 
 /**
