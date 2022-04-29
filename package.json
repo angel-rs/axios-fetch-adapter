@@ -1,6 +1,6 @@
 {
     "name": "@angelrs/axios-fetch-adapter",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "Fetch adapter for axios",
     "main": "index.js",
     "module": "index.js",
