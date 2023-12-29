@@ -1,39 +1,39 @@
 {
-    "name": "@angelrs/axios-fetch-adapter",
-    "version": "0.3.5",
-    "description": "Fetch adapter for axios",
-    "main": "index.js",
-    "module": "index.js",
-    "types": "index.d.ts",
-    "scripts": {
-        "release": "np",
-        "test": "echo done",
-        "dev": "vite"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/angel-rs/axios-fetch-adapter.git"
-    },
-    "keywords": [
-        "axios",
-        "adapter",
-        "fetch"
-    ],
-    "author": "angelmanuelrs@gmail.com",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/angel-rs/axios-fetch-adapter/issues"
-    },
-    "homepage": "https://github.com/angel-rs/axios-fetch-adapter#readme",
-    "devDependencies": {
-        "axios": "^0.26.1",
-        "np": "^7.4.0",
-        "vite": "^2.8.0"
-    },
-    "peerDependencies": {
-        "axios": "^0.26.1"
-    },
-    "publishConfig": {
-        "access": "public"
-    }
+  "name": "@angelrs/axios-fetch-adapter",
+  "version": "0.4.0",
+  "description": "Fetch adapter for axios",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "release": "np",
+    "test": "echo done",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angel-rs/axios-fetch-adapter.git"
+  },
+  "keywords": [
+    "axios",
+    "adapter",
+    "fetch"
+  ],
+  "author": "angelmanuelrs@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angel-rs/axios-fetch-adapter/issues"
+  },
+  "homepage": "https://github.com/angel-rs/axios-fetch-adapter#readme",
+  "devDependencies": {
+    "axios": "^0.27.2",
+    "np": "^7.6.1",
+    "vite": "^2.8.0"
+  },
+  "peerDependencies": {
+    "axios": ">=0.26.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
